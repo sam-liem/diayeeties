@@ -11,54 +11,57 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var monsterImage: MonsterImage!
-    @IBOutlet weak var foodImage: DragImage!
-    @IBOutlet weak var heartImage: DragImage!
+    @IBOutlet weak var patient:Patient!
+    
+    @IBOutlet weak var chicken: Food!
+    @IBOutlet weak var broccoli: Food!
+    @IBOutlet weak var apple: Food!
+    @IBOutlet weak var fries: Food!
+    @IBOutlet weak var chocolate: Food!
     
     @IBOutlet weak var penalty1Image: UIImageView!
     @IBOutlet weak var penalty2Image: UIImageView!
     @IBOutlet weak var penalty3Image: UIImageView!
     
+    var timer: NSTimer!
+
+    var sfxBite:     AVAudioPlayer!
+    var sfxDeath:    AVAudioPlayer!
+    var sfxSkull:   AVAudioPlayer!
+    
     let DIM_ALPHA: CGFloat  = 0.2
     let OPAQUE: CGFloat     = 1.0
     let MAX_PENALTIES       = 3
-    var penalties           = 0
     
-    var timer: NSTimer!
+    var penalties = 0
+    var blood_glucose = 0
     
-    var monsterHappy = false
-    var currentItem: UInt32 = 0
-    
-    var musicPlayer: AVAudioPlayer!
-    var sfxBite:     AVAudioPlayer!
-    var sfxHeart:    AVAudioPlayer!
-    var sfxDeath:    AVAudioPlayer!
-    var sfxSkull:    AVAudioPlayer!
+    func initFood(food: Food, glucoseLevel: Int) {
+        food.dropTarget = patient
+        food.glucose = glucoseLevel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        foodImage.dropTarget = monsterImage
-        heartImage.dropTarget = monsterImage
+        initFood(chicken, glucoseLevel: 0) // const
+        initFood(broccoli, glucoseLevel: 5) // const
+        initFood(apple, glucoseLevel: 30)
+        initFood(fries, glucoseLevel: 60)
+        initFood(chocolate, glucoseLevel: 100)
         
         penalty1Image.alpha = DIM_ALPHA
         penalty2Image.alpha = DIM_ALPHA
         penalty3Image.alpha = DIM_ALPHA
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
         do {
-            try musicPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("cave-music", ofType: "mp3")!))
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
-            try sfxHeart = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("heart", ofType: "wav")!))
             try sfxDeath = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("death", ofType: "wav")!))
             try sfxSkull = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("skull", ofType: "wav")!))
             
-            musicPlayer.prepareToPlay()
-            musicPlayer.play()
-            
             sfxBite.prepareToPlay()
-            sfxHeart.prepareToPlay()
             sfxDeath.prepareToPlay()
             sfxSkull.prepareToPlay()
             
@@ -69,21 +72,13 @@ class ViewController: UIViewController {
         startTimer()
     }
     
-    func itemDroppedOnCharacter(notification: AnyObject) {
-        // reset the timer when an item is dropped on our character
-        monsterHappy = true
+    func foodDroppedOnCharacter(notification: AnyObject) {
+        
+        sfxBite.play()
+        // -- LOGIC FOR EATING:
+        
+        // --
         startTimer()
-        
-        foodImage.alpha = DIM_ALPHA
-        foodImage.userInteractionEnabled = false
-        heartImage.alpha = DIM_ALPHA
-        heartImage.userInteractionEnabled = false
-        
-        if currentItem == 0 {
-            sfxHeart.play()
-        } else {
-            sfxBite.play()
-        }
     }
     
     func startTimer() {
@@ -91,11 +86,11 @@ class ViewController: UIViewController {
             timer.invalidate()
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
     }
     
     func changeGameState() {
-        if !monsterHappy {
+        if !true {
             penalties++
             
             sfxSkull.play()
@@ -119,28 +114,22 @@ class ViewController: UIViewController {
             }
         }
         
-        let rand = arc4random_uniform(2)
-        if rand == 0 {
-            foodImage.alpha = DIM_ALPHA
-            foodImage.userInteractionEnabled = false
-            
-            heartImage.alpha = OPAQUE
-            heartImage.userInteractionEnabled = true
-        } else {
-            foodImage.alpha = OPAQUE
-            foodImage.userInteractionEnabled = true
-            
-            heartImage.alpha = DIM_ALPHA
-            heartImage.userInteractionEnabled = false
-        }
+//        let rand = arc4random_uniform(2)
+//        if rand == 0 {
+//            foodImage.alpha = DIM_ALPHA
+//            foodImage.userInteractionEnabled = false
+//            
+//        } else {
+//            foodImage.alpha = OPAQUE
+//            foodImage.userInteractionEnabled = true
+//            
+//        }
         
-        currentItem = rand
-        monsterHappy = false
     }
     
     func gameOver() {
         timer.invalidate()
-        monsterImage.playDeathAnimation()
+        patient.playDeathAnimation()
         sfxDeath.play()
     }
 }

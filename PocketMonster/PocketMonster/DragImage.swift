@@ -2,9 +2,6 @@
 //  DragImage.swift
 //  PocketMonster
 //
-//  Created by Dulio Denis on 11/7/15.
-//  Copyright © 2015 Dulio Denis. All rights reserved.
-//
 
 import Foundation
 import UIKit

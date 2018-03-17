@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C186863205D3E8F009A02E1 /* patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C186862205D3E8F009A02E1 /* patient.swift */; };
+		2C186865205D42BB009A02E1 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C186864205D42BB009A02E1 /* food.swift */; };
 		6C1353951BEFC295006F6317 /* bite.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353901BEFC295006F6317 /* bite.wav */; };
 		6C1353961BEFC295006F6317 /* cave-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353911BEFC295006F6317 /* cave-music.mp3 */; };
 		6C1353971BEFC295006F6317 /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353921BEFC295006F6317 /* death.wav */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C186862205D3E8F009A02E1 /* patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patient.swift; sourceTree = "<group>"; };
+		2C186864205D42BB009A02E1 /* food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
 		6C1353901BEFC295006F6317 /* bite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bite.wav; sourceTree = "<group>"; };
 		6C1353911BEFC295006F6317 /* cave-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cave-music.mp3"; sourceTree = "<group>"; };
 		6C1353921BEFC295006F6317 /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				6C5A25E51BEBBB5F00ED9E29 /* LaunchScreen.storyboard */,
 				6C5A25E81BEBBB5F00ED9E29 /* Info.plist */,
 				6C13539A1BEFC29C006F6317 /* Sound */,
+				2C186862205D3E8F009A02E1 /* patient.swift */,
+				2C186864205D42BB009A02E1 /* food.swift */,
 			);
 			path = PocketMonster;
 			sourceTree = "<group>";
@@ -169,10 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C186863205D3E8F009A02E1 /* patient.swift in Sources */,
 				6C56E4451BEE76A900AB1A3A /* MonsterImage.swift in Sources */,
 				6C5A25DF1BEBBB5F00ED9E29 /* ViewController.swift in Sources */,
 				6C56E4431BEE739B00AB1A3A /* DragImage.swift in Sources */,
 				6C5A25DD1BEBBB5F00ED9E29 /* AppDelegate.swift in Sources */,
+				2C186865205D42BB009A02E1 /* food.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
