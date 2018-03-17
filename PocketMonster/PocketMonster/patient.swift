@@ -12,15 +12,12 @@ import UIKit
 class Patient: UIImageView {
     
     var glucose_level = 0
-    var insulin_level = 5
-    var penalties = 0
-    
     var stroke_count = 0
-    var health = 100
     var bladder = 0.5
     var faint = 0
-    var time_since_exercise = 0
-    var time_since_eat = 0
+    var t = 0
+    var hunger = 0
+    var penalties = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,15 +64,28 @@ class Patient: UIImageView {
         
     }
     
-    func insulinCheck() {
-        
+    func insulin(glucose: Int) {
+        glucose_level = glucose_level - glucose
+        t = 0
     }
     
     func eat(glucose: Int) {
-        
+        glucose_level = glucose_level + glucose
+        hunger = 0
     }
     
-    func exercise() {
-        
+    func exercise(glucose: Int) {
+        glucose_level = glucose_level - glucose
+        t = 0
+        hunger += 10
+    
+    
+    func increment_t() {
+        t += 1
+        glucose_level += t
+    }
+    
+    func increment_hunger() {
+        hunger += 1
     }
 }
