@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -66,13 +66,6 @@
                                     <rect key="frame" x="205" y="-46" width="182" height="50"/>
                                 </variation>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
-                                <rect key="frame" x="57" y="248" width="586" height="309"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
-                                    <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wgc-me-vh1">
                                 <rect key="frame" x="57" y="118" width="475" height="98"/>
                                 <subviews>
@@ -106,6 +99,13 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="329" width="600" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
+                                    <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -130,9 +130,9 @@
                             <constraint firstItem="4eU-2Z-RWq" firstAttribute="centerX" secondItem="ujA-cT-gZD" secondAttribute="centerX" constant="-4" id="we2-c8-BvW"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="top" secondItem="ujA-cT-gZD" secondAttribute="bottom" constant="16" id="xDB-cX-8iM"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-4" id="y14-oM-QAU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LSS-dW-Jrf" secondAttribute="bottom" constant="43" id="yJk-JU-Xyr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LSS-dW-Jrf" secondAttribute="bottom" constant="150" id="yJk-JU-Xyr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="N33-ED-m7Y" secondAttribute="bottom" id="ykD-ex-Wx3"/>
-                            <constraint firstItem="LSS-dW-Jrf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="50" id="zkV-2E-Lsd"/>
+                            <constraint firstItem="LSS-dW-Jrf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zkV-2E-Lsd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -173,14 +173,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568" y="463"/>
+            <point key="canvasLocation" x="546" y="451"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg" width="768" height="1024"/>
         <image name="food" width="95" height="98"/>
         <image name="ground" width="1444" height="151"/>
-        <image name="idle1" width="889" height="615"/>
+        <image name="idle1" width="128" height="128"/>
         <image name="livespanel" width="468" height="137"/>
         <image name="skull" width="95" height="98"/>
     </resources>
