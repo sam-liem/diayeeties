@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="N33-ED-m7Y">
                                 <rect key="frame" x="-4" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w">
                                 <rect key="frame" x="0.0" y="545" width="600" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3p9-dW-86z"/>
@@ -66,6 +66,15 @@
                                     <rect key="frame" x="205" y="-46" width="182" height="50"/>
                                 </variation>
                             </stackView>
+
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
+                                <rect key="frame" x="57" y="248" width="586" height="309"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
+                                    <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
+                                </constraints>
+                            </imageView>
+
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wgc-me-vh1">
                                 <rect key="frame" x="57" y="118" width="475" height="98"/>
                                 <subviews>
@@ -157,8 +166,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="apple" destination="fpb-n4-DxN" id="uSp-bk-Aqx"/>
                         <outlet property="broccoli" destination="S4T-HR-5TQ" id="Ug5-RL-PEU"/>

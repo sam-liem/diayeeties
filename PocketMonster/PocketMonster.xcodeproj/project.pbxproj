@@ -33,6 +33,8 @@
 		6C1353931BEFC295006F6317 /* heart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heart.wav; sourceTree = "<group>"; };
 		6C1353941BEFC295006F6317 /* skull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skull.wav; sourceTree = "<group>"; };
 		6C56E4421BEE739B00AB1A3A /* DragImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragImage.swift; sourceTree = "<group>"; };
+
+		6C5A25D91BEBBB5F00ED9E29 /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMonster.app; path = "/Users/samliem/Desktop/ichealthhack/diayeeties/PocketMonster/build/Debug-iphoneos/PocketMonster.app"; sourceTree = "<absolute>"; };
 		6C5A25DC1BEBBB5F00ED9E29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A25DE1BEBBB5F00ED9E29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6C5A25E11BEBBB5F00ED9E29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };

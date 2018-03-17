@@ -73,8 +73,10 @@ class ViewController: UIViewController {
         
         sfxBite.play()
         // -- LOGIC FOR EATING:
-        
+        // food = (Food); notification
+        // print(food.glucose)
         // --
+        changeGameState()
         startTimer()
     }
     
