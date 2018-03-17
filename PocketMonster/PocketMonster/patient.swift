@@ -18,9 +18,11 @@ class Patient: UIImageView {
     var health = 100
     var bladder = 0.5
     var faint = 0
+    var time_since_exercise = 0
+    var time_since_eat = 0
     
     var penalties = 0
-    var time_since_exercise = 0
+    
     
     
     override init(frame: CGRect) {
