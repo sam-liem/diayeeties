@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty2Image: UIImageView!
     @IBOutlet weak var penalty3Image: UIImageView!
     
+    @IBOutlet weak var doExercise: UIButton!
+    @IBOutlet weak var injectInsulin: UIButton!
+    
     var timer: NSTimer!
 
     var sfxBite:     AVAudioPlayer!
@@ -46,12 +49,12 @@ class ViewController: UIViewController {
         initFood(apple, glucoseLevel: 30)
         initFood(fries, glucoseLevel: 60)
         initFood(chocolate, glucoseLevel: 100)
-        
+    
         penalty1Image.alpha = DIM_ALPHA
         penalty2Image.alpha = DIM_ALPHA
         penalty3Image.alpha = DIM_ALPHA
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodDroppedOnCharacter:", name: "onTargetDropped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodItemDropped:", name: "onTargetDropped", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -69,30 +72,42 @@ class ViewController: UIViewController {
         startTimer()
     }
     
-    func foodDroppedOnCharacter(notification: AnyObject) {
-        
-        sfxBite.play()
-        // -- LOGIC FOR EATING:
-        // food = (Food); notification
-        // print(food.glucose)
-        // --
-        changeGameState()
-        startTimer()
+    @IBAction func exercise(sender: UIButton, forEvent event: UIEvent) {
+        print("hi")
+    }
+    
+    @IBAction func insulin(sender: UIButton, forEvent event: UIEvent) {
+        print("hello")
+    }
+    
+    func foodItemDropped(notification: NSNotification) {
+        print("durr")
+        if let g = notification.userInfo?["glucose"] as? Int {
+            sfxBite.play()
+            print("item dropped onto patient. g: \(g)")
+            patient.eat(g)
+            changeGameState()
+            startTimer()
+        }
     }
     
     func startTimer() {
         if timer != nil {
             timer.invalidate()
         }
-        
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
     }
     
     func changeGameState() {
         
-        patient.update()
+        patient.increment_t()
         
-        let blood_sugar = patient.glucose_level
+        // UPDATE SUGAR
+        // let blood_sugar = patient.glucose_level
+        
+        //let blood_sugar = arc4random_uniform(101) - 100 // for debugging
+        
+        //
         
         
         // UPDATE HEARTS
@@ -118,7 +133,6 @@ class ViewController: UIViewController {
         if penalties >= MAX_PENALTIES {
             gameOver()
         }
-        
     }
     
     func gameOver() {

@@ -64,8 +64,8 @@ class Patient: UIImageView {
         
     }
     
-    func insulin(glucose: Int) {
-        glucose_level = glucose_level - glucose
+    func insulin(insulin: Int) {
+        glucose_level = glucose_level - insulin
         t = 0
     }
     
@@ -78,7 +78,7 @@ class Patient: UIImageView {
         glucose_level = glucose_level - glucose
         t = 0
         hunger += 10
-    
+    }
     
     func increment_t() {
         t += 1
