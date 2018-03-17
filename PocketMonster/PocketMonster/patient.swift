@@ -13,6 +13,7 @@ class Patient: UIImageView {
     
     var glucose_level = 0
     var insulin_level = 5
+    var penalties = 0
     
     var stroke_count = 0
     var health = 100
@@ -20,8 +21,6 @@ class Patient: UIImageView {
     var faint = 0
     var time_since_exercise = 0
     var time_since_eat = 0
-    
-    var penalties = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
