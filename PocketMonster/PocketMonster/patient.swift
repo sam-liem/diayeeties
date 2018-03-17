@@ -11,16 +11,48 @@ import UIKit
 
 class Patient: UIImageView {
     
-    var glucose_level = 0
-    var insulin_level = 5
+    var glucose_level : Double = 0
+    var insulin_level : Double = 5
     var penalties = 0
     
     var stroke_count = 0
     var health = 100
-    var bladder = 0.5
-    var faint = 0
-    var time_since_exercise = 0
-    var time_since_eat = 0
+    var bladder_multiplier : Double = 0.5
+    var faint_multiplier : Double = 0
+    var time_since_exercise : Double = 0
+    var time_since_eat : Double = 0
+    
+    var time_since_launch : Double = 0
+    
+    func saveGameState() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(glucose_level, forKey: "glucose_level")
+        defaults.setObject(insulin_level, forKey: "insulin_level")
+        defaults.setObject(penalties, forKey: "penalties")
+        defaults.setObject(stroke_count, forKey: "stroke_count")
+        defaults.setObject(health, forKey: "health")
+        defaults.setObject(bladder_multiplier, forKey: "bladder_multiplier")
+        defaults.setObject(faint_multiplier, forKey: "faint_multiplier")
+        defaults.setObject(time_since_exercise, forKey: "time_since_exercise")
+        defaults.setObject(time_since_eat, forKey: "time_since_eat")
+        
+        defaults.setObject(time_since_eat, forKey: "time_since_launch")
+    }
+    
+    func loadGameState() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        glucose_level = defaults.doubleForKey("glucose_level")
+        insulin_level = defaults.doubleForKey("insulin_level")
+        penalties = defaults.integerForKey("penalties")
+        stroke_count = defaults.integerForKey("stroke_count")
+        health = defaults.integerForKey("health")
+        bladder_multiplier = defaults.doubleForKey("bladder_multiplier")
+        faint_multiplier = defaults.doubleForKey("faint_multiplier")
+        time_since_exercise = defaults.doubleForKey("time_since_exercise")
+        time_since_eat = defaults.doubleForKey("time_since_eat")
+        
+        time_since_launch = defaults.doubleForKey("time_since_launch")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +95,12 @@ class Patient: UIImageView {
         self.startAnimating()
     }
     
+    func incrementTime() {
+        time_since_launch = time_since_launch + 1
+        time_since_exercise = time_since_exercise + 1
+        time_since_eat = time_since_eat + 1
+    }
+    
     func update() {
         
     }
@@ -72,10 +110,12 @@ class Patient: UIImageView {
     }
     
     func eat(glucose: Int) {
-        
+        glucose_level += Double(glucose)
     }
     
     func exercise() {
         
     }
+    
+    
 }

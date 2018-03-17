@@ -74,7 +74,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wgc-me-vh1">
-                                <rect key="frame" x="57" y="118" width="475" height="98"/>
+                                <rect key="frame" x="57" y="98" width="475" height="98"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="98"/>
@@ -106,22 +106,37 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YNP-HK-GbA">
+                                <rect key="frame" x="6" y="206" width="580" height="34"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="X8K-Ny-Yjz">
+                                        <rect key="frame" x="-2" y="2" width="584" height="31"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </slider>
+                                </subviews>
+                                <variation key="heightClass=compact" axis="horizontal" spacing="30"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ujA-cT-gZD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0UY-Tj-9Rx"/>
+                            <constraint firstItem="YNP-HK-GbA" firstAttribute="top" secondItem="Wgc-me-vh1" secondAttribute="bottom" id="2fY-NO-IAl"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="centerX" secondItem="4eU-2Z-RWq" secondAttribute="centerX" id="3Dv-Xv-EJg"/>
                             <constraint firstItem="N33-ED-m7Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Pz-zc-JHt"/>
                             <constraint firstItem="O5o-Cn-Z1w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4eW-JN-4aL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="O5o-Cn-Z1w" secondAttribute="bottom" id="5qh-9p-iVV"/>
                             <constraint firstItem="LSS-dW-Jrf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-80" id="E8o-6b-5kq"/>
+                            <constraint firstItem="YNP-HK-GbA" firstAttribute="top" secondItem="Wgc-me-vh1" secondAttribute="bottom" id="FI7-w5-Osw"/>
                             <constraint firstItem="ujA-cT-gZD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GvM-vM-g71"/>
+                            <constraint firstItem="YNP-HK-GbA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Oft-U3-zoo"/>
                             <constraint firstItem="4eU-2Z-RWq" firstAttribute="centerY" secondItem="ujA-cT-gZD" secondAttribute="centerY" id="PLc-xD-Apc"/>
+                            <constraint firstItem="LSS-dW-Jrf" firstAttribute="top" secondItem="YNP-HK-GbA" secondAttribute="bottom" id="TlO-t9-FSM"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="VP5-fz-EhZ"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-4" id="W9d-LF-paT"/>
                             <constraint firstAttribute="trailing" secondItem="O5o-Cn-Z1w" secondAttribute="trailing" id="XLG-Z9-7Pb"/>
                             <constraint firstItem="N33-ED-m7Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZAL-Cl-UnV"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="cOL-zI-tP3"/>
+                            <constraint firstAttribute="trailing" secondItem="YNP-HK-GbA" secondAttribute="trailing" id="kpx-4t-Grz"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="top" secondItem="ujA-cT-gZD" secondAttribute="bottom" constant="16" id="nVj-eS-rbN"/>
                             <constraint firstAttribute="trailing" secondItem="N33-ED-m7Y" secondAttribute="trailing" id="umb-Ih-Rkd"/>
                             <constraint firstItem="Wgc-me-vh1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uzC-2S-SfG">

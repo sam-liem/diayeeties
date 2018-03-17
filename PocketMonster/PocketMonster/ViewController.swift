@@ -33,25 +33,11 @@ class ViewController: UIViewController {
     let OPAQUE: CGFloat     = 1.0
     let MAX_PENALTIES       = 3
     
-    func initFood(food: Food, glucoseLevel: Int) {
-        food.dropTarget = patient
-        food.glucose = glucoseLevel
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initFood(chicken, glucoseLevel: 0)
-        initFood(broccoli, glucoseLevel: 5)
-        initFood(apple, glucoseLevel: 30)
-        initFood(fries, glucoseLevel: 60)
-        initFood(chocolate, glucoseLevel: 100)
-        
-        penalty1Image.alpha = DIM_ALPHA
-        penalty2Image.alpha = DIM_ALPHA
-        penalty3Image.alpha = DIM_ALPHA
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodDroppedOnCharacter:", name: "onTargetDropped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appMovedToBackground:", name: "UIApplicationWillResignActiveNotification", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -65,19 +51,50 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print(error.debugDescription)
         }
-        
         startTimer()
+        
+        applicationDidBecomeActive()
     }
     
-    func foodDroppedOnCharacter(notification: AnyObject) {
+    func applicationDidBecomeActive() {
+        print(patient.glucose_level)
         
-        sfxBite.play()
-        // -- LOGIC FOR EATING:
-        // food = (Food); notification
-        // print(food.glucose)
-        // --
-        changeGameState()
-        startTimer()
+        initFood(chicken, glucoseLevel: 0)
+        initFood(broccoli, glucoseLevel: 5)
+        initFood(apple, glucoseLevel: 30)
+        initFood(fries, glucoseLevel: 60)
+        initFood(chocolate, glucoseLevel: 100)
+        
+        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        
+        if launchedBefore  {
+            patient.loadGameState()
+            changeGameState()
+        } else {
+            print("First launch, setting NSUserDefault.")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+            changeGameState()
+        }
+    }
+    
+    func initFood(food: Food, glucoseLevel: Int) {
+        food.dropTarget = patient
+        food.glucose = glucoseLevel
+    }
+    
+    func appMovedToBackground(notification: NSNotification) {
+        print("moved to background")
+        patient.saveGameState()
+    }
+    
+    func foodDroppedOnCharacter(notification: NSNotification) {
+        if let g = notification.object?["glucose"] as? Int {
+            sfxBite.play()
+            print("food eaten: \(g)")
+            patient.eat(g)
+            changeGameState()
+            startTimer()
+        }
     }
     
     func startTimer() {
@@ -85,17 +102,19 @@ class ViewController: UIViewController {
             timer.invalidate()
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
     }
     
     func changeGameState() {
         
+        patient.incrementTime()
         patient.update()
         
-        let blood_sugar = patient.glucose_level
+        // UPDATE GLUCOSE LEVEL BAR
+        let glucose_level = patient.glucose_level
+        print(glucose_level)
         
-        
-        // UPDATE HEARTS
+        // UPDATE HEART IMAGES
         let penalties = patient.penalties
         
         if penalties == 1 {
@@ -118,7 +137,6 @@ class ViewController: UIViewController {
         if penalties >= MAX_PENALTIES {
             gameOver()
         }
-        
     }
     
     func gameOver() {
