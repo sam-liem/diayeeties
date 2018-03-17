@@ -24,7 +24,8 @@ class Food: DragImage {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        glucose = 0
+        super.init(coder: aDecoder)
     }
-
+   
 }

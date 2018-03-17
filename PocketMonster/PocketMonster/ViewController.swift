@@ -33,9 +33,6 @@ class ViewController: UIViewController {
     let OPAQUE: CGFloat     = 1.0
     let MAX_PENALTIES       = 3
     
-    var penalties = 0
-    var blood_glucose = 0
-    
     func initFood(food: Food, glucoseLevel: Int) {
         food.dropTarget = patient
         food.glucose = glucoseLevel
@@ -44,8 +41,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initFood(chicken, glucoseLevel: 0) // const
-        initFood(broccoli, glucoseLevel: 5) // const
+        initFood(chicken, glucoseLevel: 0)
+        initFood(broccoli, glucoseLevel: 5)
         initFood(apple, glucoseLevel: 30)
         initFood(fries, glucoseLevel: 60)
         initFood(chocolate, glucoseLevel: 100)
@@ -90,40 +87,35 @@ class ViewController: UIViewController {
     }
     
     func changeGameState() {
-        if !true {
-            penalties++
-            
+        
+        patient.update()
+        
+        let blood_sugar = patient.glucose_level
+        
+        
+        // UPDATE HEARTS
+        let penalties = patient.penalties
+        
+        if penalties == 1 {
+            penalty1Image.alpha = OPAQUE
+            penalty2Image.alpha = DIM_ALPHA
             sfxSkull.play()
-            
-            if penalties == 1 {
-                penalty1Image.alpha = OPAQUE
-                penalty2Image.alpha = DIM_ALPHA
-            } else if penalties == 2 {
-                penalty2Image.alpha = OPAQUE
-                penalty3Image.alpha = DIM_ALPHA
-            } else if penalties == 3 {
-                penalty3Image.alpha = OPAQUE
-            } else {
-                penalty1Image.alpha = DIM_ALPHA
-                penalty2Image.alpha = DIM_ALPHA
-                penalty3Image.alpha = DIM_ALPHA
-            }
-            
-            if penalties >= MAX_PENALTIES {
-                gameOver()
-            }
+        } else if penalties == 2 {
+            penalty2Image.alpha = OPAQUE
+            penalty3Image.alpha = DIM_ALPHA
+            sfxSkull.play()
+        } else if penalties == 3 {
+            penalty3Image.alpha = OPAQUE
+            sfxSkull.play()
+        } else {
+            penalty1Image.alpha = DIM_ALPHA
+            penalty2Image.alpha = DIM_ALPHA
+            penalty3Image.alpha = DIM_ALPHA
         }
         
-//        let rand = arc4random_uniform(2)
-//        if rand == 0 {
-//            foodImage.alpha = DIM_ALPHA
-//            foodImage.userInteractionEnabled = false
-//            
-//        } else {
-//            foodImage.alpha = OPAQUE
-//            foodImage.userInteractionEnabled = true
-//            
-//        }
+        if penalties >= MAX_PENALTIES {
+            gameOver()
+        }
         
     }
     

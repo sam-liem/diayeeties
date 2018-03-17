@@ -23,8 +23,6 @@ class Patient: UIImageView {
     
     var penalties = 0
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -64,6 +62,10 @@ class Patient: UIImageView {
         self.animationDuration = 0.8
         self.animationRepeatCount = 1
         self.startAnimating()
+    }
+    
+    func update() {
+        
     }
     
     func insulinCheck() {

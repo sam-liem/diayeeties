@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="N33-ED-m7Y">
                                 <rect key="frame" x="-4" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w">
                                 <rect key="frame" x="0.0" y="545" width="600" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3p9-dW-86z"/>
@@ -66,7 +66,7 @@
                                     <rect key="frame" x="205" y="-46" width="182" height="50"/>
                                 </variation>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
                                 <rect key="frame" x="57" y="248" width="586" height="309"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
@@ -76,19 +76,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wgc-me-vh1">
                                 <rect key="frame" x="57" y="118" width="475" height="98"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="DragImage" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="98"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="DragImage" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="95" y="0.0" width="95" height="98"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-n4-DxN" customClass="DragImage" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-n4-DxN" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="190" y="0.0" width="95" height="98"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="0IQ-83-9oI" customClass="DragImage" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="0IQ-83-9oI" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="285" y="0.0" width="95" height="98"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-H6-tRD" customClass="DragImage" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-H6-tRD" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="380" y="0.0" width="95" height="98"/>
                                     </imageView>
                                 </subviews>
@@ -157,9 +157,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="foodImage" destination="1TR-I2-mjT" id="eyu-Vv-c34"/>
-                        <outlet property="monsterImage" destination="LSS-dW-Jrf" id="ZhU-y2-U6N"/>
+                        <outlet property="apple" destination="fpb-n4-DxN" id="uSp-bk-Aqx"/>
+                        <outlet property="broccoli" destination="S4T-HR-5TQ" id="Ug5-RL-PEU"/>
+                        <outlet property="chicken" destination="1TR-I2-mjT" id="fQE-kW-6hk"/>
+                        <outlet property="chocolate" destination="Ula-H6-tRD" id="Z4M-pG-Mg9"/>
+                        <outlet property="fries" destination="0IQ-83-9oI" id="df1-gJ-jPx"/>
+                        <outlet property="patient" destination="LSS-dW-Jrf" id="BH0-0c-dLZ"/>
                         <outlet property="penalty1Image" destination="mO7-9x-c9H" id="vQa-uf-Jic"/>
                         <outlet property="penalty2Image" destination="Uqp-a4-auE" id="UMs-bx-Y6B"/>
                         <outlet property="penalty3Image" destination="VDd-LJ-Jvg" id="Xtb-Ve-yen"/>

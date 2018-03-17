@@ -33,7 +33,7 @@
 		6C1353941BEFC295006F6317 /* skull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skull.wav; sourceTree = "<group>"; };
 		6C56E4421BEE739B00AB1A3A /* DragImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragImage.swift; sourceTree = "<group>"; };
 		6C56E4441BEE76A900AB1A3A /* MonsterImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterImage.swift; sourceTree = "<group>"; };
-		6C5A25D91BEBBB5F00ED9E29 /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C5A25D91BEBBB5F00ED9E29 /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMonster.app; path = "/Users/samliem/Desktop/ichealthhack/diayeeties/PocketMonster/build/Debug-iphoneos/PocketMonster.app"; sourceTree = "<absolute>"; };
 		6C5A25DC1BEBBB5F00ED9E29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A25DE1BEBBB5F00ED9E29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6C5A25E11BEBBB5F00ED9E29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,16 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				6C5A25DB1BEBBB5F00ED9E29 /* PocketMonster */,
-				6C5A25DA1BEBBB5F00ED9E29 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		6C5A25DA1BEBBB5F00ED9E29 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6C5A25D91BEBBB5F00ED9E29 /* PocketMonster.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		6C5A25DB1BEBBB5F00ED9E29 /* PocketMonster */ = {
@@ -143,7 +134,7 @@
 				Base,
 			);
 			mainGroup = 6C5A25D01BEBBB5F00ED9E29;
-			productRefGroup = 6C5A25DA1BEBBB5F00ED9E29 /* Products */;
+			productRefGroup = 6C5A25D01BEBBB5F00ED9E29;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
