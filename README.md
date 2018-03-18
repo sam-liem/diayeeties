@@ -1,10 +1,6 @@
-# Pocket Monster
-An iOS 9 [tamagotchi](https://en.wikipedia.org/wiki/Tamagotchi) virtual pet monster written in Swift 2. 
+# IC HEALTH HACK 18
+Diayeeties/Pokebetes: A tamagotchi like app where a child has to take care of a creature with diabetes. Monitor blood glucose, insulin levels, feed, etc.
 
-![](https://github.com/duliodenis/pocketmonster/blob/master/art/pocketmonster2.gif)
+Max Taylor-Davies, Sam Liem 
 
-### Licensing
-Pocket Monster is licensed under [the MIT License](https://github.com/duliodenis/pocketmonster/blob/master/LICENSE).
-
-### Support or Contact
-Visit [ddApps.co](http://ddapps.co) to see more.
+- 2018
