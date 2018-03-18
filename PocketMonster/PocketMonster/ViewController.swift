@@ -29,6 +29,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var injectInsulin: UIButton!
     
     var timer: NSTimer!
+    
+//    var peeTimer: NSTimer!
+//    var faintTimer: NSTimer!
 
     var sfxBite:     AVAudioPlayer!
     var sfxDeath:    AVAudioPlayer!
@@ -48,29 +51,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // patient.restart()
         if NSUserDefaults.standardUserDefaults().objectForKey("penalties") != nil {
             patient.loadState()
         }
         
-//        let exerciseController = ExerciseController()
-//        if exerciseController.level > 0 {
-//            print("shit")
-//            patient.exercise(exerciseController.level)
-//        }
-        patient.exercise(5)
+        let exerciseLevel = NSUserDefaults.standardUserDefaults().integerForKey("exerciseLEVEL")
+        if exerciseLevel > 0 {
+            patient.exercise(exerciseLevel)
+        }
         
-        initFood(chicken!, glucoseLevel: 0)
-        initFood(broccoli, glucoseLevel: 5)
-        initFood(apple, glucoseLevel: 30)
-        initFood(fries, glucoseLevel: 60)
-        initFood(chocolate, glucoseLevel: 100)
+        var peeTimer = NSTimer.scheduledTimerWithTimeInterval(135, target: self, selector:"hardCodePee", userInfo: nil, repeats: false)
+        var faintTimer = NSTimer.scheduledTimerWithTimeInterval(160, target: self, selector:"hardCodeFaint", userInfo: nil, repeats: false)
+        
+        initFood(chicken, glucoseLevel: 0)
+        initFood(broccoli, glucoseLevel: 1)
+        initFood(apple, glucoseLevel: 10)
+        initFood(fries, glucoseLevel: 20)
+        initFood(chocolate, glucoseLevel: 50)
     
         penalty1Image.alpha = OPAQUE
         penalty2Image.alpha = OPAQUE
         penalty3Image.alpha = OPAQUE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodItemDropped:", name: "onTargetDropped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showPeeNotification:", name: "onPee", object: nil)
+        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "showPeeNotification:", name: "onPee", object: nil)
+        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "showFaintNotification:", name: "onFaint", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -90,7 +96,11 @@ class ViewController: UIViewController {
     }
     
     func showPeeNotification(notification: NSNotification) {
-        print("peeeeee")
+        hardCodePee()
+    }
+    
+    func showFaintNotification(notification: NSNotification) {
+        hardCodeFaint()
     }
     
     @IBAction func exercise(sender: UIButton, forEvent event: UIEvent) {
@@ -98,7 +108,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func insulin(sender: UIButton, forEvent event: UIEvent) {
-        print("insulin injected")
         patient.insulin()
         changeGameState()
     }
@@ -119,7 +128,35 @@ class ViewController: UIViewController {
             timer.invalidate()
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "minuteElapsed", userInfo: nil, repeats: true)
+        
+        
     }
+    
+    func hardCodePee() {
+        let alert = UIAlertController(title: "Your friend peed!", message: "Those with diabetes will likely suffer from increase rate of peeing.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { action in switch action.style{
+        default:
+            // self.changeGameState()
+            // self.viewDidLoad()
+            print("hello")
+            }}))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func hardCodeFaint() {
+        if (!patient.isFainted) {
+            let alert = UIAlertController(title: "Your friend fainted from hunger!", message: "Your friend had no energy and passed out!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { action in switch action.style{
+            default:
+            // self.changeGameState()
+            // self.viewDidLoad()
+            print("hello")
+            }}))
+            self.presentViewController(alert, animated: true, completion: nil)
+            patient.playFaintAnimation()
+        }
+    }
+    
     
     func minuteElapsed() {
         patient.increment_t()

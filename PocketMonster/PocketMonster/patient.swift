@@ -15,56 +15,74 @@ class Patient: UIImageView {
     
     var glucose_level = 0 // (-100 - 100)
     
-    var bladder = 0.5 // pee multiplier (0.5 - ?)
-    var faint = 0 // faint multiplier (0 - ?)
+    var bladder = 100
+    var faint = 100 // faint multiplier (0 - ?)
     
     var time_since_decrease = 0 // time since last glucose decreasing activity (0 - ?)
     var hunger = 0 // hunger level (0 - 100)
     var penalties = 0 // tries or lives (0 - 3)
     
+    var isFainted = false
+    
     func saveState() {
         NSUserDefaults.standardUserDefaults().setObject(glucose_level, forKey: "glucose_level")
         NSUserDefaults.standardUserDefaults().setObject(bladder, forKey: "bladder")
         NSUserDefaults.standardUserDefaults().setObject(faint, forKey: "faint")
+        NSUserDefaults.standardUserDefaults().setObject(isFainted, forKey: "isFainted")
         NSUserDefaults.standardUserDefaults().setObject(time_since_decrease, forKey: "time_since_decrease")
         NSUserDefaults.standardUserDefaults().setObject(hunger, forKey: "hunger")
         NSUserDefaults.standardUserDefaults().setObject(penalties, forKey: "penalties")
     }
     
     func loadState() {
-        print(glucose_level = NSUserDefaults.standardUserDefaults().integerForKey("glucose_level"))
         glucose_level = NSUserDefaults.standardUserDefaults().integerForKey("glucose_level")
-        bladder = NSUserDefaults.standardUserDefaults().doubleForKey("bladder")
+        bladder = NSUserDefaults.standardUserDefaults().integerForKey("bladder")
         faint = NSUserDefaults.standardUserDefaults().integerForKey("faint")
+        isFainted = NSUserDefaults.standardUserDefaults().boolForKey("isFainted")
         time_since_decrease = NSUserDefaults.standardUserDefaults().integerForKey("time_since_decrease")
         hunger = NSUserDefaults.standardUserDefaults().integerForKey("hunger")
         penalties = NSUserDefaults.standardUserDefaults().integerForKey("penalties")
     }
     
     func restart() {
-        self.glucose_level = 0
-        self.bladder = 0.5
-        self.faint = 0
-        self.time_since_decrease = 0
-        self.hunger = 0
-        self.penalties = 0
-        self.playIdleAnimation()
+        glucose_level = 0
+        bladder = 100
+        faint = 100
+        isFainted = false
+        time_since_decrease = 0
+        hunger = 0
+        penalties = 0
+        playIdleAnimation()
         saveState()
-    }
-    
-    func peeNotification() {
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onPee", object: nil))
     }
     
     func update() {
         if (time_since_decrease > 30 && abs(glucose_level) > 50 || glucose_level > 75 || glucose_level < -75) {
             penalties = penalties + 1
-        }
-        
-        if (hunger > 75) {
+        } else if (hunger > 75) {
             playFaintAnimation()
             penalties = penalties + 1
         }
+        
+        if (glucose_level < 50) {
+            isFainted = false
+            playIdleAnimation()
+        }
+        
+        if (abs(glucose_level) <= 95) {
+            faint = 100 - abs(glucose_level)
+        } else {
+            faint = 5
+        }
+        
+        if (abs(glucose_level) <= 90) {
+            bladder = 100 - abs(glucose_level)
+        } else {
+            bladder = 10
+        }
+        
+        // do_pee()
+        do_faint()
     }
     
     func glucose(b : Int) {
@@ -87,7 +105,16 @@ class Patient: UIImageView {
     func exercise(intensity: Int) {
         glucose(-intensity)
         hunger += 10
-        peeNotification()
+    }
+    
+    func peeNotification() {
+        sleep(50)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onPee", object: nil))
+    }
+    
+    func faintNotification() {
+        sleep(20)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onFaint", object: nil))
     }
     
     func increment_t() {
@@ -99,6 +126,27 @@ class Patient: UIImageView {
     func increment_hunger() {
         hunger += 1
     }
+    
+    func do_pee() {
+        let b = bladder
+        let r = Int(arc4random_uniform(UInt32(b)))
+        if (r <= 10) {
+            peeNotification()
+        }
+    }
+    
+    func do_faint() {
+        if (!isFainted) {
+            let f = faint
+            let r = Int(arc4random_uniform(UInt32(f)))
+            if (r <= 5) {
+                playSleepingAnimation()
+            }
+            faintNotification()
+        }
+    }
+
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -113,7 +161,7 @@ class Patient: UIImageView {
         self.stopAnimating()
         
         // use sleeping instead of faint
-        self.image = UIImage(named: "sleeping.png")
+        self.image = UIImage(named: "sleeping1.png")
         
 //        self.animationImages = nil
 //        

@@ -31,6 +31,8 @@ class ExerciseController: UIViewController {
             
             progressBar.progress = progress
             exerciseLevel.text = String(level)
+            
+            NSUserDefaults.standardUserDefaults().setObject(level * 10, forKey: "exerciseLEVEL")
         }
     }
     
