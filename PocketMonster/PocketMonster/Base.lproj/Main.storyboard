@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -30,21 +30,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="N33-ED-m7Y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="eLd-wm-QoR">
+                                <rect key="frame" x="240" y="115" width="287" height="31"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="bloodGlucoseBarChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="iN3-Ay-Buo"/>
+                                </connections>
+                            </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w" userLabel="ground1">
+                                <rect key="frame" x="-6" y="545" width="600" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="3p9-dW-86z"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
+                                <rect key="frame" x="170" y="145" width="370" height="309"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
+                                    <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="-6" translatesAutoresizingMaskIntoConstraints="NO" id="4eU-2Z-RWq" userLabel="lives">
-                                <rect key="frame" x="13" y="13" width="138" height="50"/>
+                                <rect key="frame" x="133" y="100" width="138" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="heart-1" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-9x-c9H">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="WsN-hF-wvj"/>
-                                            <constraint firstAttribute="width" constant="50" id="diA-wF-tML"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="heart-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uqp-a4-auE">
-                                        <rect key="frame" x="44" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="f11-yt-gco"/>
                                             <constraint firstAttribute="height" constant="50" id="tpG-0z-EYs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="heart-1" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-9x-c9H">
+                                        <rect key="frame" x="44" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WsN-hF-wvj"/>
+                                            <constraint firstAttribute="width" constant="50" id="diA-wF-tML"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="heart-1" translatesAutoresizingMaskIntoConstraints="NO" id="VDd-LJ-Jvg">
@@ -60,7 +80,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zkA-7L-SwV" userLabel="foods">
-                                <rect key="frame" x="505" y="10" width="96" height="480"/>
+                                <rect key="frame" x="20" y="28" width="96" height="672"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food1" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
@@ -69,11 +89,12 @@
                                             <constraint firstAttribute="width" constant="96" id="f6J-1p-vSU"/>
                                             <constraint firstAttribute="width" secondItem="1TR-I2-mjT" secondAttribute="height" multiplier="1:1" id="kLB-bz-I9Z"/>
                                         </constraints>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food2" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="96" width="96" height="96"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="8"/>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food3" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-n4-DxN" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="96" width="96" height="96"/>
+                                    </imageView>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food2" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="192" width="96" height="96"/>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food4" translatesAutoresizingMaskIntoConstraints="NO" id="0IQ-83-9oI" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
@@ -82,61 +103,40 @@
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food5" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-H6-tRD" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="384" width="96" height="96"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuU-3N-FFT" userLabel="Exercise">
+                                        <rect key="frame" x="0.0" y="480" width="96" height="96"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button" image="run"/>
+                                        <connections>
+                                            <action selector="exercise:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3QV-RL-rmD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-zS-HG7" userLabel="Insulin">
+                                        <rect key="frame" x="0.0" y="576" width="96" height="96"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button" image="insulin"/>
+                                        <connections>
+                                            <action selector="insulin:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i1E-pz-x5h"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-dW-Jrf" customClass="Patient" customModule="PocketMonster" customModuleProvider="target">
-                                <rect key="frame" x="-6" y="187" width="586" height="309"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="586" id="uJl-xh-VGJ"/>
-                                    <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
-                                </constraints>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="eLd-wm-QoR">
-                                <rect key="frame" x="212" y="33" width="287" height="31"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="bloodGlucoseBarChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="iN3-Ay-Buo"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Sugar Level:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-2A-dTj">
-                                <rect key="frame" x="159" y="5" width="118" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Blood Glucose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-2A-dTj">
+                                <rect key="frame" x="315" y="70" width="136" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Too Low" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz2-59-EZD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz2-59-EZD">
                                 <rect key="frame" x="214" y="65" width="72" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Too High" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-pO-TE7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-pO-TE7">
                                 <rect key="frame" x="425" y="66" width="72" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuU-3N-FFT" userLabel="Exercise">
-                                <rect key="frame" x="41" y="167" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="exercise:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3QV-RL-rmD"/>
-                                    <segue destination="uSD-sZ-rOZ" kind="showDetail" id="JBo-Fy-krD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-zS-HG7" userLabel="Insulin">
-                                <rect key="frame" x="32" y="252" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="insulin:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i1E-pz-x5h"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ground" translatesAutoresizingMaskIntoConstraints="NO" id="O5o-Cn-Z1w" userLabel="ground1">
-                                <rect key="frame" x="-6" y="545" width="600" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="3p9-dW-86z"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -145,7 +145,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="O5o-Cn-Z1w" secondAttribute="bottom" id="5qh-9p-iVV"/>
                             <constraint firstItem="zkA-7L-SwV" firstAttribute="leading" secondItem="hGW-pO-TE7" secondAttribute="trailing" id="Cae-Ez-ZX4"/>
                             <constraint firstItem="LSS-dW-Jrf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-80" id="E8o-6b-5kq"/>
-                            <constraint firstItem="zkA-7L-SwV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Uad-lf-zbu"/>
+                            <constraint firstItem="zkA-7L-SwV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="100" id="Uad-lf-zbu"/>
                             <constraint firstAttribute="trailing" secondItem="O5o-Cn-Z1w" secondAttribute="trailing" id="XLG-Z9-7Pb"/>
                             <constraint firstItem="N33-ED-m7Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZAL-Cl-UnV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zkA-7L-SwV" secondAttribute="trailing" id="ouq-kQ-qGd"/>
@@ -156,7 +156,12 @@
                             <constraint firstItem="LSS-dW-Jrf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zkV-2E-Lsd"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Xz2-59-EZD"/>
+                                <exclude reference="hGW-pO-TE7"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="sbA-It-Lhy"/>
                                 <exclude reference="E8o-6b-5kq"/>
                             </mask>
                         </variation>
@@ -191,5 +196,7 @@
         <image name="ground" width="1444" height="151"/>
         <image name="heart-1" width="64" height="64"/>
         <image name="idle1" width="128" height="128"/>
+        <image name="insulin" width="128" height="128"/>
+        <image name="run" width="128" height="128"/>
     </resources>
 </document>
