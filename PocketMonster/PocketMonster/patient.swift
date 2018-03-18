@@ -10,16 +10,12 @@ import Foundation
 import UIKit
 
 class Patient: UIImageView {
-    
     let INSULIN_CONST = 10
-    
     var glucose_level = 0 // (-100 - 100)
-    
-    var bladder = 0.5 // pee multiplier (0.5 - ?)
-    var faint = 0 // faint multiplier (0 - ?)
-    
+    var bladder = 100 // pee multiplier, takes values from 100 (10% chance of pee) down to 10 (100% chance of pee)
+    var faint = 0 // faint multiplier, takes values from 100 (5% chance of faint) down to 5 (100% chance of faint)
     var time_since_decrease = 0 // time since last glucose decreasing activity (0 - ?)
-    var hunger = 0 // hunger level (0 - 100)
+    var hunger = 0 // hunger level 0 - 60 (at which point they starve)
     var penalties = 0 // tries or lives (0 - 3)
     
     func sendNotification(s : String, b : String) {
@@ -32,10 +28,25 @@ class Patient: UIImageView {
             penalties = penalties + 1
         }
         
-        if (hunger > 75) {
+        if (hunger > 60) {
             playFaintAnimation()
             penalties = penalties + 1
         }
+        
+        if abs(glucose_level) <= 90 {
+            bladder = 100 - abs(glucose_level)
+        } else {
+            bladder = 10
+        }
+        
+        if abs(glucose_level) <= 95 {
+            faint = 100 - abs(glucose_level)
+        } else {
+            faint = 5
+        }
+        
+        do_pee(bladder)
+        do_faint(faint)
     }
     
     func glucose(b : Int) {
@@ -63,14 +74,24 @@ class Patient: UIImageView {
     
     func increment_t() {
         time_since_decrease += 1
-        glucose_level += time_since_decrease
-        increment_hunger()
-    }
-    
-    func increment_hunger() {
+        glucose_level -= (glucose_level / abs(glucose_level))
         hunger += 1
     }
     
+    func do_pee(bladder: Int) {
+        let r = Int(arc4random_uniform(UInt32(bladder)))
+        if (r <= 10) {
+            playPeeAnimation()
+        }
+    }
+    
+    func do_faint(faint: Int) {
+        let r = Int(arc4random_uniform(UInt32(faint)))
+        if (r <= 5) {
+            playFaintAnimation()
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -95,6 +116,10 @@ class Patient: UIImageView {
         self.animationDuration = 0.8
         self.animationRepeatCount = 1
         self.startAnimating()
+    }
+    
+    func playPeeAnimation() {
+        
     }
     
     func playIdleAnimation() {
