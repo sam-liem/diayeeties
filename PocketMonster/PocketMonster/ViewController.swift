@@ -38,6 +38,8 @@ class ViewController: UIViewController {
     let OPAQUE: CGFloat     = 1.0
     let MAX_PENALTIES       = 3
     
+    var e = 0
+    
     func initFood(food: Food, glucoseLevel: Int) {
         food.dropTarget = patient
         food.glucose = glucoseLevel
@@ -46,7 +48,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initFood(chicken, glucoseLevel: 0)
+        if NSUserDefaults.standardUserDefaults().objectForKey("penalties") != nil {
+            patient.loadState()
+        }
+        
+        if e > 0 {
+            patient.exercise(e * 5)
+            e = 0
+        }
+        
+        initFood(chicken!, glucoseLevel: 0)
         initFood(broccoli, glucoseLevel: 5)
         initFood(apple, glucoseLevel: 30)
         initFood(fries, glucoseLevel: 60)
@@ -58,6 +69,7 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodItemDropped:", name: "onTargetDropped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showPeeNotification:", name: "onPee", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "recieveExercise:", name: "shakerino", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -72,24 +84,20 @@ class ViewController: UIViewController {
             print(error.debugDescription)
         }
         
+        changeGameState()
         startTimer()
     }
 
+    func receiveExercise(notification: NSNotification) {
+        e = e + 1
+    }
     
     func showPeeNotification(notification: NSNotification) {
         print("peeeeee")
     }
     
     @IBAction func exercise(sender: UIButton, forEvent event: UIEvent) {
-        
-        showAlert()
-        print("exercise completed")
-        
-        // how to get exercise intensity
-        patient.exercise(10)
-        //
-        
-        changeGameState()
+        patient.saveState()
     }
     
     @IBAction func insulin(sender: UIButton, forEvent event: UIEvent) {
@@ -162,7 +170,9 @@ class ViewController: UIViewController {
     }
     
     func gameOver() {
-        timer.invalidate()
+        if (timer != nil) {
+            timer.invalidate()
+        }
         patient.playDeathAnimation()
         sfxDeath.play()
         showAlert()

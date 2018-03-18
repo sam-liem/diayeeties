@@ -22,14 +22,34 @@ class Patient: UIImageView {
     var hunger = 0 // hunger level (0 - 100)
     var penalties = 0 // tries or lives (0 - 3)
     
+    func saveState() {
+        NSUserDefaults.standardUserDefaults().setObject(glucose_level, forKey: "glucose_level")
+        NSUserDefaults.standardUserDefaults().setObject(bladder, forKey: "bladder")
+        NSUserDefaults.standardUserDefaults().setObject(faint, forKey: "faint")
+        NSUserDefaults.standardUserDefaults().setObject(time_since_decrease, forKey: "time_since_decrease")
+        NSUserDefaults.standardUserDefaults().setObject(hunger, forKey: "hunger")
+        NSUserDefaults.standardUserDefaults().setObject(penalties, forKey: "penalties")
+    }
+    
+    func loadState() {
+        print(glucose_level = NSUserDefaults.standardUserDefaults().integerForKey("glucose_level"))
+        glucose_level = NSUserDefaults.standardUserDefaults().integerForKey("glucose_level")
+        bladder = NSUserDefaults.standardUserDefaults().doubleForKey("bladder")
+        faint = NSUserDefaults.standardUserDefaults().integerForKey("faint")
+        time_since_decrease = NSUserDefaults.standardUserDefaults().integerForKey("time_since_decrease")
+        hunger = NSUserDefaults.standardUserDefaults().integerForKey("hunger")
+        penalties = NSUserDefaults.standardUserDefaults().integerForKey("penalties")
+    }
+    
     func restart() {
-        glucose_level = 0
-        bladder = 0.5
-        faint = 0
-        time_since_decrease = 0
-        hunger = 0
-        penalties = 0
-        playIdleAnimation()
+        self.glucose_level = 0
+        self.bladder = 0.5
+        self.faint = 0
+        self.time_since_decrease = 0
+        self.hunger = 0
+        self.penalties = 0
+        self.playIdleAnimation()
+        saveState()
     }
     
     func peeNotification() {

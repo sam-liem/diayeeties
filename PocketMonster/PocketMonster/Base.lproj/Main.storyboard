@@ -7,23 +7,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tCN-74-2wd">
+        <!--Exercise-->
+        <scene sceneID="PbI-93-8wl">
             <objects>
-                <viewController id="c1O-k6-j6X" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kvt-GU-kvb"/>
-                        <viewControllerLayoutGuide type="bottom" id="BSy-b5-MNI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pxp-OD-MCW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CGO-fh-ekv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Exercise" id="uSD-sZ-rOZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9Y-Tn-hLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1725" y="-73"/>
+            <point key="canvasLocation" x="-2743.5" y="-521"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -130,6 +120,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="exercise:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3QV-RL-rmD"/>
+                                    <segue destination="uSD-sZ-rOZ" kind="showDetail" id="JBo-Fy-krD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-zS-HG7" userLabel="Insulin">
