@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C186863205D3E8F009A02E1 /* patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C186862205D3E8F009A02E1 /* patient.swift */; };
 		2C186865205D42BB009A02E1 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C186864205D42BB009A02E1 /* food.swift */; };
+		2C853A92205E95A60047283A /* ExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C853A91205E95A60047283A /* ExerciseController.swift */; };
 		6C1353951BEFC295006F6317 /* bite.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353901BEFC295006F6317 /* bite.wav */; };
 		6C1353961BEFC295006F6317 /* cave-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353911BEFC295006F6317 /* cave-music.mp3 */; };
 		6C1353971BEFC295006F6317 /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C1353921BEFC295006F6317 /* death.wav */; };
@@ -25,6 +26,7 @@
 		2C186862205D3E8F009A02E1 /* patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patient.swift; sourceTree = "<group>"; };
 		2C186864205D42BB009A02E1 /* food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
 		2C853A90205E747D0047283A /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMonster.app; path = "/Users/samliem/Desktop/ichealthhack/diayeeties/PocketMonster/build/Debug-iphoneos/PocketMonster.app"; sourceTree = "<absolute>"; };
+		2C853A91205E95A60047283A /* ExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseController.swift; sourceTree = "<group>"; };
 		505A1BB3205D636000F7803E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		6C1353901BEFC295006F6317 /* bite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bite.wav; sourceTree = "<group>"; };
 		6C1353911BEFC295006F6317 /* cave-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cave-music.mp3"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				6C13539A1BEFC29C006F6317 /* Sound */,
 				2C186862205D3E8F009A02E1 /* patient.swift */,
 				2C186864205D42BB009A02E1 /* food.swift */,
+				2C853A91205E95A60047283A /* ExerciseController.swift */,
 			);
 			path = PocketMonster;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				2C186863205D3E8F009A02E1 /* patient.swift in Sources */,
 				6C5A25DF1BEBBB5F00ED9E29 /* ViewController.swift in Sources */,
+				2C853A92205E95A60047283A /* ExerciseController.swift in Sources */,
 				6C5A25DD1BEBBB5F00ED9E29 /* AppDelegate.swift in Sources */,
 				2C186865205D42BB009A02E1 /* food.swift in Sources */,
 			);

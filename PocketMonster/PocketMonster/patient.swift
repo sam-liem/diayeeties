@@ -22,9 +22,18 @@ class Patient: UIImageView {
     var hunger = 0 // hunger level (0 - 100)
     var penalties = 0 // tries or lives (0 - 3)
     
-    func sendNotification(s : String, b : String) {
-        let data:[String: String] = ["subject": s, "body": b]
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onMessageSent", object: nil, userInfo: data))
+    func restart() {
+        glucose_level = 0
+        bladder = 0.5
+        faint = 0
+        time_since_decrease = 0
+        hunger = 0
+        penalties = 0
+        playIdleAnimation()
+    }
+    
+    func peeNotification() {
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onPee", object: nil))
     }
     
     func update() {
@@ -45,7 +54,6 @@ class Patient: UIImageView {
             hunger = 0
         }
         glucose_level += b
-        update()
     }
     
     func insulin() {
@@ -59,6 +67,7 @@ class Patient: UIImageView {
     func exercise(intensity: Int) {
         glucose(-intensity)
         hunger += 10
+        peeNotification()
     }
     
     func increment_t() {
@@ -81,51 +90,63 @@ class Patient: UIImageView {
     }
     
     func playFaintAnimation() {
-        // TODO
-        self.image = UIImage(named: "idle1.png")
-        self.animationImages = nil
+        self.stopAnimating()
         
-        var imageArray = [UIImage]()
-        for var x = 1; x <= 4; x++ {
-            let img = UIImage(named: "idle\(x).png")
-            imageArray.append(img!)
-        }
+        // use sleeping instead of faint
+        self.image = UIImage(named: "sleeping.png")
         
-        self.animationImages = imageArray
-        self.animationDuration = 0.8
-        self.animationRepeatCount = 1
-        self.startAnimating()
+//        self.animationImages = nil
+//        
+//        var imageArray = [UIImage]()
+//        for var x = 1; x <= 1; x++ {
+//            let img = UIImage(named: "faint\(x).png")
+//            imageArray.append(img!)
+//        }
+//        
+//        self.animationImages = imageArray
+//        self.animationDuration = 0.8
+//        self.animationRepeatCount = 1
+//        self.startAnimating()
+    }
+    
+    func playSleepingAnimation() {
+        self.stopAnimating()
+        self.image = UIImage(named: "sleeping1.png")
     }
     
     func playIdleAnimation() {
+        self.stopAnimating()
         self.image = UIImage(named: "idle1.png")
-        self.animationImages = nil
-        
-        var imageArray = [UIImage]()
-        for var x = 1; x <= 4; x++ {
-            let img = UIImage(named: "idle\(x).png")
-            imageArray.append(img!)
-        }
-        
-        self.animationImages = imageArray
-        self.animationDuration = 0.8
-        self.animationRepeatCount = 0
-        self.startAnimating()
+//        self.animationImages = nil
+//        
+//        var imageArray = [UIImage]()
+//        for var x = 1; x <= 4; x++ {
+//            let img = UIImage(named: "idle\(x).png")
+//            imageArray.append(img!)
+//        }
+//        
+//        self.animationImages = imageArray
+//        self.animationDuration = 0.8
+//        self.animationRepeatCount = 0
+//        self.startAnimating()
     }
     
     func playDeathAnimation() {
-        self.image = UIImage(named: "dead5.png") // TODO: find n death images
-        self.animationImages = nil
-        
-        var imageArray = [UIImage]()
-        for var x = 1; x <= 5; x++ { // x <= n
-            let img = UIImage(named: "dead\(x).png")
-            imageArray.append(img!)
-        }
-        
-        self.animationImages = imageArray
-        self.animationDuration = 0.8
-        self.animationRepeatCount = 1
-        self.startAnimating()
+        self.stopAnimating()
+        self.image = UIImage(named: "faint1.png")
+//        
+//        self.image = UIImage(named: "dead5.png")
+//        self.animationImages = nil
+//        
+//        var imageArray = [UIImage]()
+//        for var x = 1; x <= 5; x++ { // x <= n
+//            let img = UIImage(named: "dead\(x).png")
+//            imageArray.append(img!)
+//        }
+//        
+//        self.animationImages = imageArray
+//        self.animationDuration = 0.8
+//        self.animationRepeatCount = 1
+//        self.startAnimating()
     }
 }

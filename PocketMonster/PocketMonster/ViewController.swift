@@ -52,11 +52,12 @@ class ViewController: UIViewController {
         initFood(fries, glucoseLevel: 60)
         initFood(chocolate, glucoseLevel: 100)
     
-        penalty1Image.alpha = DIM_ALPHA
-        penalty2Image.alpha = DIM_ALPHA
-        penalty3Image.alpha = DIM_ALPHA
+        penalty1Image.alpha = OPAQUE
+        penalty2Image.alpha = OPAQUE
+        penalty3Image.alpha = OPAQUE
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodItemDropped:", name: "onTargetDropped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showPeeNotification:", name: "onPee", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -74,15 +75,10 @@ class ViewController: UIViewController {
         startTimer()
     }
 
-//    
-//    func showMessage(notification: NSNotification) {
-//        let data = notification.userInfo
-//        if let subject = data?["subject"] as? String {
-//            let body = data?["body"] as? String
-//            // something to display information to the user.
-//            
-//        }
-//    }
+    
+    func showPeeNotification(notification: NSNotification) {
+        print("peeeeee")
+    }
     
     @IBAction func exercise(sender: UIButton, forEvent event: UIEvent) {
         
@@ -91,6 +87,7 @@ class ViewController: UIViewController {
         
         // how to get exercise intensity
         patient.exercise(10)
+        //
         
         changeGameState()
     }
@@ -143,21 +140,20 @@ class ViewController: UIViewController {
         // UPDATE HEARTS
         let penalties = patient.penalties
         
-        if penalties == 1 {
-            penalty1Image.alpha = OPAQUE
-            penalty2Image.alpha = DIM_ALPHA
+        if penalties > 0 {
             sfxSkull.play()
-        } else if penalties == 2 {
-            penalty2Image.alpha = OPAQUE
             penalty3Image.alpha = DIM_ALPHA
-            sfxSkull.play()
-        } else if penalties == 3 {
-            penalty3Image.alpha = OPAQUE
-            sfxSkull.play()
         } else {
-            penalty1Image.alpha = DIM_ALPHA
+            penalty1Image.alpha = OPAQUE
+            penalty2Image.alpha = OPAQUE
+            penalty3Image.alpha = OPAQUE
+        }
+        
+        if penalties > 1 {
             penalty2Image.alpha = DIM_ALPHA
-            penalty3Image.alpha = DIM_ALPHA
+        }
+        if penalties > 2 {
+            penalty1Image.alpha = DIM_ALPHA
         }
         
         if penalties >= MAX_PENALTIES {
@@ -169,28 +165,18 @@ class ViewController: UIViewController {
         timer.invalidate()
         patient.playDeathAnimation()
         sfxDeath.play()
+        showAlert()
     }
-    
-    var popup:UIView!
     
     func showAlert() {
-        // customise your view
-        
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        popup = UIView(frame: CGRect(x: screenSize.width / 2, y: screenSize.height / 2, width: screenSize.width * 0.8, height: screenSize.height * 0.8 ))
-        popup.center = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
-        popup.backgroundColor = UIColor.redColor()
-        
-        // show on screen
-        self.view.addSubview(popup)
-        
-        // set the timer
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
-    }
-    
-    func dismissAlert(){
-        // Dismiss the view from here
-        popup.removeFromSuperview()
+        let alert = UIAlertController(title: "Game Over", message: "Diabetes is a very serious condition.\n Those with it have it forever.\n If you have diabetes, we support you.\n If you know somebody with diabetes, please support them.\n Please eat healthy foods like fruits and vegetables instead of sugary foods like sweets and pizza.\n\n Eat right, exercise often, be healthy!", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { action in switch action.style{
+            default:
+                self.patient.restart()
+                self.changeGameState()
+                self.viewDidLoad()
+        }}))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

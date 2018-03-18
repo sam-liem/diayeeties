@@ -8,6 +8,24 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="tCN-74-2wd">
+            <objects>
+                <viewController id="c1O-k6-j6X" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kvt-GU-kvb"/>
+                        <viewControllerLayoutGuide type="bottom" id="BSy-b5-MNI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxp-OD-MCW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGO-fh-ekv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1725" y="-73"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PocketMonster" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="367" y="263"/>
+            <point key="canvasLocation" x="-2513" y="-73"/>
         </scene>
     </scenes>
     <resources>
