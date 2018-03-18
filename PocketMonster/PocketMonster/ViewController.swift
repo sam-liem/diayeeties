@@ -52,10 +52,12 @@ class ViewController: UIViewController {
             patient.loadState()
         }
         
-        if e > 0 {
-            patient.exercise(e * 5)
-            e = 0
-        }
+//        let exerciseController = ExerciseController()
+//        if exerciseController.level > 0 {
+//            print("shit")
+//            patient.exercise(exerciseController.level)
+//        }
+        patient.exercise(5)
         
         initFood(chicken!, glucoseLevel: 0)
         initFood(broccoli, glucoseLevel: 5)
@@ -69,7 +71,6 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foodItemDropped:", name: "onTargetDropped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showPeeNotification:", name: "onPee", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "recieveExercise:", name: "shakerino", object: nil)
         
         do {
             try sfxBite = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("bite", ofType: "wav")!))
@@ -86,10 +87,6 @@ class ViewController: UIViewController {
         
         changeGameState()
         startTimer()
-    }
-
-    func receiveExercise(notification: NSNotification) {
-        e = e + 1
     }
     
     func showPeeNotification(notification: NSNotification) {
