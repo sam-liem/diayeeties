@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty2Image: UIImageView!
     @IBOutlet weak var penalty3Image: UIImageView!
     
+    @IBOutlet weak var injectInsulin: UIButton!
+    @IBOutlet weak var doExercise: UIButton!
+    
     var timer: NSTimer!
 
     var sfxBite:     AVAudioPlayer!
@@ -37,6 +40,15 @@ class ViewController: UIViewController {
         food.dropTarget = patient
         food.glucose = glucoseLevel
     }
+    
+    @IBAction func inject(sender: UIButton) {
+        print("inject")
+    }
+    
+    @IBAction func exercise(sender: UIButton) {
+        print("exercise")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +95,11 @@ class ViewController: UIViewController {
             timer.invalidate()
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
     }
     
     func changeGameState() {
+        
         
         patient.update()
         

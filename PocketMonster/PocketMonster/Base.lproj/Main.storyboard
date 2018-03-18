@@ -27,16 +27,6 @@
                                     <constraint firstAttribute="height" constant="55" id="3p9-dW-86z"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livespanel" translatesAutoresizingMaskIntoConstraints="NO" id="ujA-cT-gZD">
-                                <rect key="frame" x="180" y="20" width="240" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="IML-Ch-Hcr"/>
-                                    <constraint firstAttribute="width" constant="240" id="tKM-IB-Mma"/>
-                                </constraints>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="180" y="-61" width="240" height="80"/>
-                                </variation>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4eU-2Z-RWq">
                                 <rect key="frame" x="205" y="35" width="182" height="50"/>
                                 <subviews>
@@ -66,23 +56,33 @@
                                     <rect key="frame" x="205" y="-46" width="182" height="50"/>
                                 </variation>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livespanel" translatesAutoresizingMaskIntoConstraints="NO" id="ujA-cT-gZD">
+                                <rect key="frame" x="180" y="20" width="240" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="IML-Ch-Hcr"/>
+                                    <constraint firstAttribute="width" constant="240" id="tKM-IB-Mma"/>
+                                </constraints>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="180" y="-61" width="240" height="80"/>
+                                </variation>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wgc-me-vh1">
-                                <rect key="frame" x="57" y="118" width="475" height="98"/>
+                                <rect key="frame" x="57" y="118" width="640" height="128"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="98"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food1" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="0.0" width="95" height="98"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food2" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-HR-5TQ" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="128" y="0.0" width="128" height="128"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-n4-DxN" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="95" height="98"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food3" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-n4-DxN" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="256" y="0.0" width="128" height="128"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="0IQ-83-9oI" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="285" y="0.0" width="95" height="98"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food4" translatesAutoresizingMaskIntoConstraints="NO" id="0IQ-83-9oI" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="384" y="0.0" width="128" height="128"/>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-H6-tRD" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
-                                        <rect key="frame" x="380" y="0.0" width="95" height="98"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food5" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-H6-tRD" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                        <rect key="frame" x="512" y="0.0" width="128" height="128"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -106,6 +106,20 @@
                                     <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-eX-Xib">
+                                <rect key="frame" x="30" y="279" width="52" height="30"/>
+                                <state key="normal" title="Button1"/>
+                                <connections>
+                                    <action selector="inject:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GsI-G9-jAT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1F-Lu-bLd">
+                                <rect key="frame" x="63" y="329" width="55" height="30"/>
+                                <state key="normal" title="Button2"/>
+                                <connections>
+                                    <action selector="exercise:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GbY-ne-u1r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -164,7 +178,9 @@
                         <outlet property="broccoli" destination="S4T-HR-5TQ" id="Ug5-RL-PEU"/>
                         <outlet property="chicken" destination="1TR-I2-mjT" id="fQE-kW-6hk"/>
                         <outlet property="chocolate" destination="Ula-H6-tRD" id="Z4M-pG-Mg9"/>
+                        <outlet property="doExercise" destination="o1F-Lu-bLd" id="e7N-9l-nfO"/>
                         <outlet property="fries" destination="0IQ-83-9oI" id="df1-gJ-jPx"/>
+                        <outlet property="injectInsulin" destination="bUr-eX-Xib" id="v8j-Tt-muu"/>
                         <outlet property="patient" destination="LSS-dW-Jrf" id="BH0-0c-dLZ"/>
                         <outlet property="penalty1Image" destination="mO7-9x-c9H" id="vQa-uf-Jic"/>
                         <outlet property="penalty2Image" destination="Uqp-a4-auE" id="UMs-bx-Y6B"/>
@@ -178,7 +194,11 @@
     </scenes>
     <resources>
         <image name="bg" width="768" height="1024"/>
-        <image name="food" width="95" height="98"/>
+        <image name="food1" width="128" height="128"/>
+        <image name="food2" width="128" height="128"/>
+        <image name="food3" width="128" height="128"/>
+        <image name="food4" width="128" height="128"/>
+        <image name="food5" width="128" height="128"/>
         <image name="ground" width="1444" height="151"/>
         <image name="idle1" width="128" height="128"/>
         <image name="livespanel" width="468" height="137"/>

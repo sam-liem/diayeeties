@@ -58,10 +58,36 @@ class Patient: UIImageView {
         self.animationDuration = 0.8
         self.animationRepeatCount = 1
         self.startAnimating()
+        
     }
     
     func update() {
         
+    }
+    
+    func starve() {
+        penalties += 1
+        glucose_level = 0
+        t = 0
+        hunger = 0
+    }
+    
+    func hyper() {
+        if glucose_level >= 100 {
+            penalties += 1
+            glucose_level = 0
+        } else if glucose_level >= 50 {
+            faint = 1
+        }
+    }
+    
+    func hypo() {
+        if glucose_level <= -100 {
+            penalties += 1
+            glucose_level = 0
+        } else if glucose_level <= -50 {
+            faint = 1
+        }
     }
     
     func insulin(glucose: Int) {
@@ -78,14 +104,23 @@ class Patient: UIImageView {
         glucose_level = glucose_level - glucose
         t = 0
         hunger += 10
-    
+    }
     
     func increment_t() {
         t += 1
         glucose_level += t
-    }
-    
-    func increment_hunger() {
         hunger += 1
+        
+        if hunger >= 200 {
+            starve()
+        }
+        
+        if glucose_level > 0 {
+            hyper()
+        }
+        
+        if glucose_level < 0 {
+            hypo()
+        }
     }
 }
