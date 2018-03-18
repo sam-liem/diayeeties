@@ -54,7 +54,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zkA-7L-SwV" userLabel="foods">
                                 <rect key="frame" x="505" y="10" width="96" height="480"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="food1" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food1" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-I2-mjT" customClass="Food" customModule="PocketMonster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="96" id="eb1-dA-9gU"/>
@@ -83,9 +83,12 @@
                                     <constraint firstAttribute="height" constant="309" id="v71-ao-P1G"/>
                                 </constraints>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eLd-wm-QoR">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="eLd-wm-QoR">
                                 <rect key="frame" x="212" y="33" width="287" height="31"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="bloodGlucoseBarChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="iN3-Ay-Buo"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Sugar Level:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-2A-dTj">
                                 <rect key="frame" x="159" y="5" width="118" height="45"/>
@@ -151,6 +154,7 @@
                     </view>
                     <connections>
                         <outlet property="apple" destination="fpb-n4-DxN" id="uSp-bk-Aqx"/>
+                        <outlet property="bloodGlucoseBar" destination="eLd-wm-QoR" id="NwW-JQ-5Ys"/>
                         <outlet property="broccoli" destination="S4T-HR-5TQ" id="Ug5-RL-PEU"/>
                         <outlet property="chicken" destination="1TR-I2-mjT" id="fQE-kW-6hk"/>
                         <outlet property="chocolate" destination="Ula-H6-tRD" id="Z4M-pG-Mg9"/>

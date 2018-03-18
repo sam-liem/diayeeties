@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		2C186862205D3E8F009A02E1 /* patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = patient.swift; sourceTree = "<group>"; };
 		2C186864205D42BB009A02E1 /* food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
-		505A1BB1205D5C4300F7803E /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMonster.app; path = "/Users/samliem/Desktop/ichealthhack/diayeeties/PocketMonster/build/Debug-iphoneos/PocketMonster.app"; sourceTree = "<absolute>"; };
+		2C853A90205E747D0047283A /* PocketMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PocketMonster.app; path = "/Users/samliem/Desktop/ichealthhack/diayeeties/PocketMonster/build/Debug-iphoneos/PocketMonster.app"; sourceTree = "<absolute>"; };
 		505A1BB3205D636000F7803E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		6C1353901BEFC295006F6317 /* bite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bite.wav; sourceTree = "<group>"; };
 		6C1353911BEFC295006F6317 /* cave-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cave-music.mp3"; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			);
 			name = PocketMonster;
 			productName = PocketMonster;
-			productReference = 505A1BB1205D5C4300F7803E /* PocketMonster.app */;
+			productReference = 2C853A90205E747D0047283A /* PocketMonster.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

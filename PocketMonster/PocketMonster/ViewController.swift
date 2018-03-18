@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty2Image: UIImageView!
     @IBOutlet weak var penalty3Image: UIImageView!
     
+    @IBOutlet weak var bloodGlucoseBar: UISlider!
+    
     @IBOutlet weak var doExercise: UIButton!
     @IBOutlet weak var injectInsulin: UIButton!
     
@@ -71,21 +73,40 @@ class ViewController: UIViewController {
         
         startTimer()
     }
+
+//    
+//    func showMessage(notification: NSNotification) {
+//        let data = notification.userInfo
+//        if let subject = data?["subject"] as? String {
+//            let body = data?["body"] as? String
+//            // something to display information to the user.
+//            
+//        }
+//    }
     
     @IBAction func exercise(sender: UIButton, forEvent event: UIEvent) {
-        print("hi")
+        
+        showAlert()
+        print("exercise completed")
+        
+        // how to get exercise intensity
+        patient.exercise(10)
+        
+        changeGameState()
     }
     
     @IBAction func insulin(sender: UIButton, forEvent event: UIEvent) {
-        print("hello")
+        print("insulin injected")
+        patient.insulin()
+        changeGameState()
     }
     
     func foodItemDropped(notification: NSNotification) {
-        print("durr")
         if let g = notification.userInfo?["glucose"] as? Int {
             sfxBite.play()
-            print("item dropped onto patient. g: \(g)")
+            print("before \(g): \(patient.glucose_level)")
             patient.eat(g)
+            print("after: \(patient.glucose_level)")
             changeGameState()
             startTimer()
         }
@@ -95,20 +116,29 @@ class ViewController: UIViewController {
         if timer != nil {
             timer.invalidate()
         }
-        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "changeGameState", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "minuteElapsed", userInfo: nil, repeats: true)
+    }
+    
+    func minuteElapsed() {
+        patient.increment_t()
+        changeGameState()
+    }
+    
+    @IBAction func bloodGlucoseBarChange(sender : UISlider) {
+        patient.glucose_level = Int(sender.value)
+        changeGameState()
     }
     
     func changeGameState() {
         
-        patient.increment_t()
+        patient.update()
         
         // UPDATE SUGAR
-        // let blood_sugar = patient.glucose_level
+        let blood_sugar = patient.glucose_level
         
-        //let blood_sugar = arc4random_uniform(101) - 100 // for debugging
+        print("glucose: \(blood_sugar)")
         
-        //
-        
+        bloodGlucoseBar.value = Float(blood_sugar)
         
         // UPDATE HEARTS
         let penalties = patient.penalties
@@ -139,6 +169,28 @@ class ViewController: UIViewController {
         timer.invalidate()
         patient.playDeathAnimation()
         sfxDeath.play()
+    }
+    
+    var popup:UIView!
+    
+    func showAlert() {
+        // customise your view
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        popup = UIView(frame: CGRect(x: screenSize.width / 2, y: screenSize.height / 2, width: screenSize.width * 0.8, height: screenSize.height * 0.8 ))
+        popup.center = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
+        popup.backgroundColor = UIColor.redColor()
+        
+        // show on screen
+        self.view.addSubview(popup)
+        
+        // set the timer
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismissAlert"), userInfo: nil, repeats: false)
+    }
+    
+    func dismissAlert(){
+        // Dismiss the view from here
+        popup.removeFromSuperview()
     }
 }
 

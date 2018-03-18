@@ -11,13 +11,65 @@ import UIKit
 
 class Patient: UIImageView {
     
-    var glucose_level = 0
-    var stroke_count = 0
-    var bladder = 0.5
-    var faint = 0
-    var t = 0
-    var hunger = 0
-    var penalties = 0
+    let INSULIN_CONST = 10
+    
+    var glucose_level = 0 // (-100 - 100)
+    
+    var bladder = 0.5 // pee multiplier (0.5 - ?)
+    var faint = 0 // faint multiplier (0 - ?)
+    
+    var time_since_decrease = 0 // time since last glucose decreasing activity (0 - ?)
+    var hunger = 0 // hunger level (0 - 100)
+    var penalties = 0 // tries or lives (0 - 3)
+    
+    func sendNotification(s : String, b : String) {
+        let data:[String: String] = ["subject": s, "body": b]
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "onMessageSent", object: nil, userInfo: data))
+    }
+    
+    func update() {
+        if (time_since_decrease > 30 && abs(glucose_level) > 50 || glucose_level > 75 || glucose_level < -75) {
+            penalties = penalties + 1
+        }
+        
+        if (hunger > 75) {
+            playFaintAnimation()
+            penalties = penalties + 1
+        }
+    }
+    
+    func glucose(b : Int) {
+        if b < 0 {
+            time_since_decrease = 0
+        } else if b > 0 {
+            hunger = 0
+        }
+        glucose_level += b
+        update()
+    }
+    
+    func insulin() {
+        glucose(-INSULIN_CONST)
+    }
+    
+    func eat(intake: Int) {
+        glucose(intake)
+    }
+    
+    func exercise(intensity: Int) {
+        glucose(-intensity)
+        hunger += 10
+    }
+    
+    func increment_t() {
+        time_since_decrease += 1
+        glucose_level += time_since_decrease
+        increment_hunger()
+    }
+    
+    func increment_hunger() {
+        hunger += 1
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,13 +80,30 @@ class Patient: UIImageView {
         playIdleAnimation()
     }
     
-    func playIdleAnimation() {
-        self.image = UIImage(named: "idle1.png") // TODO: find n idle images
+    func playFaintAnimation() {
+        // TODO
+        self.image = UIImage(named: "idle1.png")
         self.animationImages = nil
         
         var imageArray = [UIImage]()
-        for var x = 1; x <= 4; x++ { // x <= n
-            let img = UIImage(named: "idle\(x).png") // TODO: find n idle images
+        for var x = 1; x <= 4; x++ {
+            let img = UIImage(named: "idle\(x).png")
+            imageArray.append(img!)
+        }
+        
+        self.animationImages = imageArray
+        self.animationDuration = 0.8
+        self.animationRepeatCount = 1
+        self.startAnimating()
+    }
+    
+    func playIdleAnimation() {
+        self.image = UIImage(named: "idle1.png")
+        self.animationImages = nil
+        
+        var imageArray = [UIImage]()
+        for var x = 1; x <= 4; x++ {
+            let img = UIImage(named: "idle\(x).png")
             imageArray.append(img!)
         }
         
@@ -58,34 +127,5 @@ class Patient: UIImageView {
         self.animationDuration = 0.8
         self.animationRepeatCount = 1
         self.startAnimating()
-    }
-    
-    func update() {
-        
-    }
-    
-    func insulin(insulin: Int) {
-        glucose_level = glucose_level - insulin
-        t = 0
-    }
-    
-    func eat(glucose: Int) {
-        glucose_level = glucose_level + glucose
-        hunger = 0
-    }
-    
-    func exercise(glucose: Int) {
-        glucose_level = glucose_level - glucose
-        t = 0
-        hunger += 10
-    }
-    
-    func increment_t() {
-        t += 1
-        glucose_level += t
-    }
-    
-    func increment_hunger() {
-        hunger += 1
     }
 }
